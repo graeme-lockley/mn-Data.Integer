@@ -15,6 +15,8 @@
 //- * The type `a * a` signifies a tuple.
 
 const Maybe = mrequire("core:Data.Maybe:1.2.0");
+const Tuple = mrequire("core:Data.Tuple:v1.0.0");
+
 
 //- Default implementation for `divMod`.
 //= Integer a => defaultDivMod :: a -> Maybe (a * a)
@@ -23,7 +25,7 @@ function defaultDivMod(y) {
         () => Maybe.Nothing)(
         q => this.mod(y).reduce(
             () => Maybe.Nothing)(
-            r => Maybe.Just([q, r])
+            r => Maybe.Just(Tuple(q)(r))
         )
     );
 }
